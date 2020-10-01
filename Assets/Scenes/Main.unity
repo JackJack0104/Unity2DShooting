@@ -265,6 +265,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 2094831367018258421, guid: 000f4b917d55440b58ed03c12d089289,
     type: 3}
+  bossEnemyPrefab: {fileID: 8508860692395201736, guid: 76d8630eaf7e2441692af19251639134,
+    type: 3}
 --- !u!4 &347020943
 Transform:
   m_ObjectHideFlags: 0
