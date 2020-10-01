@@ -5,6 +5,9 @@ using UnityEngine;
 public class EnemyGenerator : MonoBehaviour
 {
     public GameObject enemyPrefab;
+    public GameObject bossEnemyPrefab;
+
+    private int random;
 
     void Start()
     {
@@ -12,6 +15,8 @@ public class EnemyGenerator : MonoBehaviour
         // InvokeRepeating(string methodName, float time, float repeatRate);
         // Spawn関数を2秒後から０.5秒毎にリピートする
         InvokeRepeating("Spawn", 2f, 0.5f);
+
+        Invoke("cancel", 4f);
     }
 
     // 生成する関数
@@ -30,8 +35,21 @@ public class EnemyGenerator : MonoBehaviour
             );
     }
 
-    void Update()
+    void BossEnemySpawn()
     {
-        
+        Vector3 spawnPosition = new Vector3(
+            transform.position.x,
+            transform.position.y,
+            transform.position.z
+        );
+
+        Instantiate(bossEnemyPrefab, spawnPosition, transform.rotation);
+    }
+
+    void cancel()
+    {
+        CancelInvoke("spawn");
+
+        Invoke("BossEnemySpawn", 3f);
     }
 }
